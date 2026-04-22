@@ -33,13 +33,13 @@ Open **http://localhost:8001/docs** for interactive Swagger documentation.
 
 ## API Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/zakat/calculate` | Full Zakat calculation |
-| GET  | `/zakat/nisab` | Current nisab threshold (live prices) |
-| GET  | `/zakat/livestock/{type}/{count}` | Livestock Zakat |
-| GET  | `/zakat/rates` | All Zakat rates reference |
-| GET  | `/health` | Health check |
+| Method | Endpoint                          | Description                           |
+| ------ | --------------------------------- | ------------------------------------- |
+| POST   | `/zakat/calculate`                | Full Zakat calculation                |
+| GET    | `/zakat/nisab`                    | Current nisab threshold (live prices) |
+| GET    | `/zakat/livestock/{type}/{count}` | Livestock Zakat                       |
+| GET    | `/zakat/rates`                    | All Zakat rates reference             |
+| GET    | `/health`                         | Health check                          |
 
 ## Example Request
 
@@ -65,7 +65,7 @@ curl -X POST http://localhost:8001/zakat/calculate \
 
 ## Nisab Standard
 
-This API uses the **silver nisab (612.36g)** — the more inclusive threshold adopted by the majority of contemporary scholars, particularly relevant for lower-income communities.
+This API uses the **silver nisab (595g)** — the more inclusive threshold adopted by the majority of contemporary scholars, particularly relevant for lower-income communities.
 
 ## Disclaimer
 

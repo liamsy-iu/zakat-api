@@ -124,3 +124,28 @@ async def get_exchange_rate(currency: str) -> float:
     except Exception as e:
         logger.warning(f"FX fetch failed: {e}")
         return 1.0
+
+async def get_live_metal_prices(currency: str = "USD") -> dict:
+    """
+    Get live metal prices in the requested currency.
+    Returns prices per gram for gold and silver.
+    """
+    # Get USD prices first
+    usd_prices = await get_metal_prices_usd()
+    
+    # Convert to requested currency
+    if currency == "USD":
+        return {
+            "silver_per_gram": usd_prices["silver_usd_per_gram"],
+            "gold_per_gram": usd_prices["gold_usd_per_gram"],
+            "source": usd_prices["source"]
+        }
+    
+    # Get exchange rate
+    exchange_rate = await get_exchange_rate(currency)
+    
+    return {
+        "silver_per_gram": usd_prices["silver_usd_per_gram"] * exchange_rate,
+        "gold_per_gram": usd_prices["gold_usd_per_gram"] * exchange_rate,
+        "source": usd_prices["source"]
+    }
